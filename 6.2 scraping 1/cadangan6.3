@@ -1,0 +1,31 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+import urllib.request
+import json
+
+s = Service("E:\DATA DOKUMEN\POLBAN\semester 2\Proyek 1  Pengembangan Perangkat Lunak Desktop\Tugas\P-Minggu 6\Tugas 6.3 web scraping\msedgedriver.exe")
+driver = webdriver.Edge(service=s)
+driver.get("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/")
+
+# tvshowlist = []
+i = 1
+for tvshow in driver.find_elements(By.CLASS_NAME, "row countdown-item"):
+    print(tvshow.text)
+    for img in tvshow.find_elements(By.TAG_NAME, "img"):
+        print(img.get_attribute("src"))
+        urllib.request.urlretrieve(img.get_attribute("src"), str(i)+".png")
+        i = i+1
+        # tvshowlist.append(
+        # 	{   "No": tvshow.text.split(".")[0],
+        #         "Judul": tvshow.text.split("(")[0],
+        #         "Tahun rilis": tvshow.text.split(")")[0],
+        #         "Rating": tvshow.text.split(")")[0].split()[0],
+        #         "Image": img.get_attribute("src")
+        # 	}
+        # )
+# hasil_scraping = open("hasilscraping.json", "w")
+# json.dump(tvshowlist, hasil_scraping, indent = 6)
+# hasil_scraping.close()
+
+driver.quit()
