@@ -7,7 +7,9 @@
    
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
- 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
      <!-- Site Metas -->
     <title>Salma's Personal Web</title>  
     <meta name="keywords" content="">
@@ -16,6 +18,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <!-- Site CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Responsive CSS -->
@@ -24,10 +29,75 @@
     <link rel="stylesheet" href="css/custom.css">
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script type="text/javascript">
+        function scrap1() {
+            var x = document.getElementById("scraping1");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function scrap2() {
+            var x = document.getElementById("scraping2");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+          //Mengambil data dari file headlineScraper.json dengan fungsi $.get() JQuery
+          $.get("contentTerkini.json", function (obj) {
+            //Tag tabel awal
+            var str = "<table class='table table-striped table-hover border=1'>";
+        //Judul tabel
+            str += "<tr><td>No</td><td>Judul Headline</td><td>Kategori</td><td>Waktu Publish</td><td>Tanggal Scraping</td></tr>";
+        //Looping data headline dengan fungsi $.each() JQuery
+            $.each(obj, function (n, dataterkini) {
+              //Isi tabel
+                str += "<tr><td>" + (n + 1) + "</td>";
+                str += "<td>" + dataterkini.judul + "</td>";
+                str += "<td>" + dataterkini.kategori + "</td>";
+                str += "<td>" + dataterkini.waktu_publish + "</td>";
+                str += "<td>" + dataterkini.tgl_scrap + "</td></tr>";
+            });
+        //Tag tabel penutup
+            str += "</table>";
+            //Display semua headline ke html dengan id=media
+            $("#headline_json").html(str);
+          });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            //Mengambil data dari file headlineScraper.json dengan fungsi $.get() JQuery
+          $.get("hasilscraping.json", function (obj) {
+            //Tag tabel awal
+            var str = "<table class='table table-striped table-dark border=1'>";
+            //Judul tabel
+            str += "<tr><td>Ranking</td><td>Poster Film</td><td>Title</td><td>Release Year</td><td>Percent Rate</td><td>Director</td><td>Scraping Date</td></tr>";
+            //Looping data headline dengan fungsi $.each() JQuery
+            $.each(obj, function (n, movieslist) {
+                //Isi tabel
+                str += "<tr><td>" + movieslist.Ranking + "</td>";
+                str += '<td><img src="' + movieslist.Image + '"></td>';
+                str += "<td>" + movieslist.Title + "</td>";
+                str += "<td>" + movieslist.ReleaseDate + "</td>";
+                str += "<td>" + movieslist.PercentRate + "</td>";
+                str += "<td>" + movieslist.Director + "</td>";
+                str += "<td>" + movieslist.ScrapingDate + "</td></tr>";
+            });
+            //Tag tabel penutup
+            str += "</table>";
+            //Display semua headline ke html dengan id=media
+            $("#headline2_json").html(str);
+          });
+        });
+    </script>
 
 </head>
 <body id="page-top" class="politics_version">
@@ -63,6 +133,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#education">Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#scraping">scraping</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Life Motto</a>
@@ -213,6 +286,18 @@
                         <p>My design and drawing skills are quite good, especially traditional drawing. I'm also quite good at making calligraphy art.</p>
 					</div>
                 </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+        <div id="scraping" class="section lb">
+        <div class="container">
+            <div class="section-title text-left">
+                <h3>Scraping</h3>
+                <p>This is my own skils.</p>
+            </div><!-- end title -->
+
+            <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="services-inner-box">
                         <div class="ser-icon">
@@ -220,11 +305,37 @@
                         </div>
                         <h2>Web Scrapping</h2>
                         <p>I also have a new skill that I recently got, namely doing web scrapping in python
-You can see the results of the web scraping that I have made in the button below.</p>
-<a href="https://salmaep.github.io/datascraping1/" class="sim-btn btn-hover-new" data-text="See my web scraping 1"><span>See my web scraping 1</span></a> <a href="https://salmaep.github.io/webscraping2.github.io/" class="sim-btn btn-hover-new" data-text="See my web scraping 2"><span>See my web scraping 2</span></a>
+                        You can see the results of the web scraping that I have made in the button below.</p>
+
+                        <button onclick="scrap1()" class="sim-btn btn-hover-new" data-text="See web scraping 1"><span>See web scraping 1</span></button>
+                        <button onclick="scrap2()" class="sim-btn btn-hover-new" data-text="See web scraping 2"><span>See web scraping 2</span></button>
+                        <p></p>
+                        <p><i style="font-size:24px" class="fa">&#xf0eb;</i></i> Tips : This button is a button to show and hide scraping content. Therefore, to open the next scraping result, it is recommended to click the currently opened scraping button to hide the content so that both scraping content is displayed properly. </p>
                     </div>
                 </div>
             </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <div id="scraping1" class="section lb" style="display:none">
+        <div class="container">
+            <center>
+              <h1 class="display-4">Headline Republika Online</h1>
+            </center>
+        
+            <!-- Menampilkan headline -->
+            <div id="headline_json" style="background-color: white;"></div>
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <div id="scraping2" class="section lb" style="display:none">
+        <div class="container">
+            <center>
+                    <h2 class="display-4">- TOP 100 Netflix Movies -</h2>
+            </center>
+    
+            <!-- Menampilkan headline -->
+            <div id="headline2_json" style="background-color: white;"></div>
         </div><!-- end container -->
     </div><!-- end section -->
 
@@ -266,7 +377,7 @@ You can see the results of the web scraping that I have made in the button below
                 <h3>Life Motto</h3>
                 <p>This is the motto of my life that makes me always aware that every problem I face there will always be a way out.</p>
             </div><!-- end title -->
-                            <img src="uploads/motohidup.jpeg" class="rounded mx-auto d-block" alt="post-img"/>
+            <img src="uploads/motohidup.jpeg" class="rounded mx-auto d-block" alt="post-img"/>
               
 		</div>
 	</div>
@@ -324,18 +435,9 @@ You can see the results of the web scraping that I have made in the button below
 					<div class="post-box">
 						<div class="post-thumb">
 							<img src="uploads/blog-01.jpeg" class="img-fluid" alt="post-img" />
-							<!-- <div class="date">
-								<span>06</span>
-								<span>Aug</span>
-							</div> -->
 						</div>
 						<div class="post-info">
 							<h4>Reading webtoon.</h4>
-							<!-- <ul>
-                                <li>by admin</li>
-                                <li>Apr 21, 2018</li>
-                                <li><a href="#"><b> Comments</b></a></li>
-                            </ul> -->
 							<p>I really like reading webtoons or comics. The genres I like are action, fantasy and also kingdom. I've been doing this hobby since I was in junior high school.</p>
 						</div>
 					</div>
@@ -344,18 +446,9 @@ You can see the results of the web scraping that I have made in the button below
 					<div class="post-box">
 						<div class="post-thumb">
 							<img src="uploads/blog-02.jpeg" class="img-fluid" alt="post-img" />
-							<!-- <div class="date">
-								<span>06</span>
-								<span>Aug</span>
-							</div> -->
 						</div>
 						<div class="post-info">
 							<h4>Listening music.</h4>
-							<!-- <ul>
-                                <li>by admin</li>
-                                <li>Apr 21, 2018</li>
-                                <li><a href="#"><b> Comments</b></a></li>
-                            </ul> -->
 							<p>I really like listening to music especially when I'm doing homework, because it makes me more excited and focus. I also have a special playlist to accompany me with my homework</p>
 						</div>
 					</div>
@@ -364,18 +457,10 @@ You can see the results of the web scraping that I have made in the button below
 					<div class="post-box">
 						<div class="post-thumb">
 							<img src="uploads/blog-03.jpeg" class="img-fluid" alt="post-img" />
-							<!-- <div class="date">
-								<span>06</span>
-								<span>Aug</span>
-							</div> -->
+
 						</div>
 						<div class="post-info">
 							<h4>Drawing.</h4>
-							<!-- <ul>
-                                <li>by admin</li>
-                                <li>Apr 21, 2018</li>
-                                <li><a href="#"><b> Comments</b></a></li>
-                            </ul> -->
 							<p>Lately my hobby is adding to that is drawing on paper using a pencil or so-called traditional drawing. And often I also draw digitally using my cellphone.</p>
 						</div>
 					</div>
