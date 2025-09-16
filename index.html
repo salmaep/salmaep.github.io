@@ -1,122 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  <head>
     <!-- Basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-   
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-     <!-- Site Metas -->
-    <title>Salma's Personal Web</title>  
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Site Metas -->
+    <title>Salma's Personal Web</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <!-- Site CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="css/custom.css" />
+    <!-- Modernizr -->
+    <script src="js/modernizr.js"></script>
+    <!-- Devicon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
 
     <script type="text/javascript">
-        function scrap1() {
-            var x = document.getElementById("scraping1");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+      function scrap1() {
+        var x = document.getElementById("scraping1");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
         }
-        function scrap2() {
-            var x = document.getElementById("scraping2");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+      }
+      function scrap2() {
+        var x = document.getElementById("scraping2");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
         }
+      }
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript">
-        $(function () {
-          //Mengambil data dari file headlineScraper.json dengan fungsi $.get() JQuery
-          $.get("contentTerkini.json", function (obj) {
-            //Tag tabel awal
-            var str = "<table class='table table-striped table-hover border=1'>";
-        //Judul tabel
-            str += "<tr><td>No</td><td>Judul Headline</td><td>Kategori</td><td>Waktu Publish</td><td>Tanggal Scraping</td></tr>";
-        //Looping data headline dengan fungsi $.each() JQuery
-            $.each(obj, function (n, dataterkini) {
-              //Isi tabel
-                str += "<tr><td>" + (n + 1) + "</td>";
-                str += "<td>" + dataterkini.judul + "</td>";
-                str += "<td>" + dataterkini.kategori + "</td>";
-                str += "<td>" + dataterkini.waktu_publish + "</td>";
-                str += "<td>" + dataterkini.tgl_scrap + "</td></tr>";
-            });
-        //Tag tabel penutup
-            str += "</table>";
-            //Display semua headline ke html dengan id=media
-            $("#headline_json").html(str);
+      $(function () {
+        //Mengambil data dari file headlineScraper.json dengan fungsi $.get() JQuery
+        $.get("contentTerkini.json", function (obj) {
+          //Tag tabel awal
+          var str = "<table class='table table-striped table-hover border=1'>";
+          //Judul tabel
+          str +=
+            "<tr><td>No</td><td>Judul Headline</td><td>Kategori</td><td>Waktu Publish</td><td>Tanggal Scraping</td></tr>";
+          //Looping data headline dengan fungsi $.each() JQuery
+          $.each(obj, function (n, dataterkini) {
+            //Isi tabel
+            str += "<tr><td>" + (n + 1) + "</td>";
+            str += "<td>" + dataterkini.judul + "</td>";
+            str += "<td>" + dataterkini.kategori + "</td>";
+            str += "<td>" + dataterkini.waktu_publish + "</td>";
+            str += "<td>" + dataterkini.tgl_scrap + "</td></tr>";
           });
+          //Tag tabel penutup
+          str += "</table>";
+          //Display semua headline ke html dengan id=media
+          $("#headline_json").html(str);
         });
+      });
     </script>
     <script type="text/javascript">
-        $(function () {
-            //Mengambil data dari file headlineScraper.json dengan fungsi $.get() JQuery
-          $.get("hasilscraping.json", function (obj) {
-            //Tag tabel awal
-            var str = "<table class='table table-striped table-dark border=1'>";
-            //Judul tabel
-            str += "<tr><td>Ranking</td><td>Poster Film</td><td>Title</td><td>Release Year</td><td>Percent Rate</td><td>Director</td><td>Scraping Date</td></tr>";
-            //Looping data headline dengan fungsi $.each() JQuery
-            $.each(obj, function (n, movieslist) {
-                //Isi tabel
-                str += "<tr><td>" + movieslist.Ranking + "</td>";
-                str += '<td><img src="' + movieslist.Image + '"></td>';
-                str += "<td>" + movieslist.Title + "</td>";
-                str += "<td>" + movieslist.ReleaseDate + "</td>";
-                str += "<td>" + movieslist.PercentRate + "</td>";
-                str += "<td>" + movieslist.Director + "</td>";
-                str += "<td>" + movieslist.ScrapingDate + "</td></tr>";
-            });
-            //Tag tabel penutup
-            str += "</table>";
-            //Display semua headline ke html dengan id=media
-            $("#headline2_json").html(str);
+      $(function () {
+        //Mengambil data dari file headlineScraper.json dengan fungsi $.get() JQuery
+        $.get("hasilscraping.json", function (obj) {
+          //Tag tabel awal
+          var str = "<table class='table table-striped table-dark border=1'>";
+          //Judul tabel
+          str +=
+            "<tr><td>Ranking</td><td>Poster Film</td><td>Title</td><td>Release Year</td><td>Percent Rate</td><td>Director</td><td>Scraping Date</td></tr>";
+          //Looping data headline dengan fungsi $.each() JQuery
+          $.each(obj, function (n, movieslist) {
+            //Isi tabel
+            str += "<tr><td>" + movieslist.Ranking + "</td>";
+            str += '<td><img src="' + movieslist.Image + '"></td>';
+            str += "<td>" + movieslist.Title + "</td>";
+            str += "<td>" + movieslist.ReleaseDate + "</td>";
+            str += "<td>" + movieslist.PercentRate + "</td>";
+            str += "<td>" + movieslist.Director + "</td>";
+            str += "<td>" + movieslist.ScrapingDate + "</td></tr>";
           });
+          //Tag tabel penutup
+          str += "</table>";
+          //Display semua headline ke html dengan id=media
+          $("#headline2_json").html(str);
         });
+      });
     </script>
-
-</head>
-<body id="page-top" class="politics_version">
-
+  </head>
+  <body id="page-top" class="politics_version">
     <!-- LOADER -->
     <div id="preloader">
-        <div id="main-ld">
-			<div id="loader"></div>  
-		</div>
-    </div><!-- end loader -->
+      <div id="main-ld">
+        <div id="loader"></div>
+      </div>
+    </div>
+    <!-- end loader -->
     <!-- END LOADER -->
-	
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="navbar-collapse collapse w-10 dual-collapse2 order-1 order-md-0">
+      <div
+        class="navbar-collapse collapse w-10 dual-collapse2 order-1 order-md-0"
+      >
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-			<img class="img-fluid" src="" alt="" />
-		</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <img class="img-fluid" src="" alt="" />
+        </a>
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           Menu
           <i class="fa fa-bars"></i>
         </button>
@@ -129,46 +157,66 @@
               <a class="nav-link js-scroll-trigger" href="#about">About Me</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Skills</a>
+              <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#education">Education</a>
+              <a class="nav-link js-scroll-trigger" href="#education"
+                >Education</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portofolio">Portofolio</a>
+              <a class="nav-link js-scroll-trigger" href="#project-work"
+                >Project Work</a
+              >
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#testimonials">Goals</a>
-            </li>
-			<!-- <li class="nav-item">
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#testimonials"
+                >Goals</a
+              >
+            </li> -->
+            <!-- <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#blog">Hobby</a>
             </li> -->
-			<li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-	
-	<section id="home" class="main-banner parallaxie" style="background: url('uploads/banner-01.png')">
-		<div class="heading">
-			<h1>Hello i'm Salma</h1>
-			<p>Welcome to my personal website </p>
-			<h3 class="cd-headline clip is-full-width">
-				<span></span>
-				<span class="cd-words-wrapper">
-					<b class="is-visible">I'm a student college</b>
-					<b>at Bandung state Polythecnic</b>
-<!-- 					<b>Creative Design</b>
-					<b>Graphic Design</b> -->
-				</span>
-			</h3>
-		</div>
-	</section>
 
-	<svg id="clouds" class="hidden-xs" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 85 100" preserveAspectRatio="none">
-        <path d="M-5 100 Q 0 20 5 100 Z
+    <section
+      id="home"
+      class="main-banner parallaxie"
+      style="background: url('uploads/banner-01.png')"
+    >
+      <div class="heading">
+        <h1>Hello I'm Salma</h1>
+        <p>Welcome to my personal website</p>
+        <h3 class="cd-headline clip is-full-width">
+          <span></span>
+          <span class="cd-words-wrapper">
+            <b class="is-visible"
+              >Undergraduate Informatics Engineering Student</b
+            >
+            <b>at Bandung state Polythecnic</b>
+          </span>
+        </h3>
+      </div>
+    </section>
+
+    <svg
+      id="clouds"
+      class="hidden-xs"
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      width="100%"
+      height="100"
+      viewBox="0 0 85 100"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M-5 100 Q 0 20 5 100 Z
             M0 100 Q 5 0 10 100
             M5 100 Q 10 30 15 100
             M10 100 Q 15 10 20 100
@@ -188,292 +236,469 @@
             M80 100 Q 85 20 90 100
             M85 100 Q 90 50 95 100
             M90 100 Q 95 25 100 100
-            M95 100 Q 100 15 105 100 Z">
-        </path>
+            M95 100 Q 100 15 105 100 Z"
+      ></path>
     </svg>
 
     <div id="about" class="section wb">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="message-box">                        
-                        <h2>About Me.</h2>
-                        <p style="margin-top: 10px;"> Helloo </p>
-						<p>My name is Salma Edyna Putri. My nickname is Salma. </p>
-                        <p>I really like art and design, especially web design. I am a new student at POLBAN majoring in Informatics Engineering. I can do teamwork quite well and also place more importance on and respect other people's opinions.</p>
-                        <a href="https://www.canva.com/design/DAEorBIjr8o/tdeZNjj_HrJ8laYbiKyCXw/view?utm_content=DAEorBIjr8o&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="sim-btn btn-hover-new" data-text="See my CV"><span>See my CV</span></a>
-                    </div><!-- end messagebox -->
-                </div><!-- end col -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="message-box">
+              <h2>About Me</h2>
+              <p style="margin-top: 10px">Hello!</p>
+              <p>
+                My name is Salma Edyna Putri, an Informatics Engineering student
+                at Bandung State Polytechnic.
+              </p>
+              <p>
+                I have hands-on experience in web, mobile, and desktop
+                development using technologies such as Java, React.js, React
+                Native, and RESTful APIs. I also have a strong interest in
+                software testing and quality assurance. Skilled in teamwork and
+                collaboration, I enjoy learning new technologies and creating
+                solutions that are both functional and user-friendly.
+              </p>
+              <a
+                href="https://drive.google.com/file/d/13tfbzKX5waabesDxW6GHtdADDLdeqDvZ/view?usp=sharing"
+                class="sim-btn btn-hover-new"
+                data-text="See my CV"
+                ><span>See my CV</span></a
+              >
+            </div>
+            <!-- end messagebox -->
+          </div>
+          <!-- end col -->
 
-                <!-- <div class="col-md-6">
+          <!-- <div class="col-md-6">
                     <div class="right-box-pro wow fadeIn">
                         <img src="uploads/about-04.jpeg" alt="" class="img-fluid img-rounded">
-                    </div><!-- end media -->
-                <!-- </div>end col --> -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
-	
-    <div id="services" class="section lb">
-        <div class="container">
-            <div class="section-title text-left">
-                <h3>Skills</h3>
-                <p>This is my own skils.</p>
-            </div><!-- end title -->
+                    </div>
+          </div>
+          -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end section -->
 
-            <div class="row">
-				<div class="col-md-4">
-                    <div class="services-inner-box">
-						<div class="ser-icon">
-							<i class="flaticon-seo"></i>
-						</div>
-						<h2>HTML CSS</h2>
-						<p>My programming skills in the field of html css are very good and if you look at the percentage, it will reach 90%.</p>
-					</div>
-                </div><!-- end col -->
-                <div class="col-md-4">
-                    <div class="services-inner-box">
-						<div class="ser-icon">
-							<i class="flaticon-development"></i>
-						</div>
-						<h2>Javascript</h2>
-						<p>My programming skills in the field of javascript are quite good and if you look at the percentage, it will reach 80%.</p>
-					</div>
-                </div><!-- end col -->
-				<div class="col-md-4">
-                    <div class="services-inner-box">
-						<div class="ser-icon">
-							<i class="flaticon-process"></i>
-						</div>
-						<h2>C</h2>
-						<p>My programming skills in the field of javascript are quite good and if you look at the percentage, it will reach 75%</p>
-					</div>
-                </div><!--end col-->
-				<div class="col-md-4">
-                    <div class="services-inner-box">
-						<div class="ser-icon">
-							<i class="flaticon-discuss-issue"></i>
-						</div>
-						<h2>Java</h2>
-						<p>My programming skills in the field of javascript are quite good and if you look at the percentage, it will reach 70%.</p>
-					</div>
-                </div><!-- end col -->
-				<div class="col-md-4">
-                    <div class="services-inner-box">
-						<div class="ser-icon">
-							<i class="flaticon-idea"></i>
-						</div>
-						<h2>PHP</h2>
-						<p>My programming skills in the field of javascript are quite good and if you look at the percentage, it will reach 80%.</p>
-					</div>
-                </div><!-- end col -->
-				<div class="col-md-4">
-                    <div class="services-inner-box">
-						<div class="ser-icon">
-							<i class="flaticon-idea-1"></i>
-						</div>
-						<h2>Art skill</h2>
-                        <p>My design and drawing skills are quite good, especially traditional drawing. I'm also quite good at making calligraphy art.</p>
-					</div>
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+    <div id="skills" class="section lb">
+      <div class="container">
+        <div class="section-title text-left">
+          <h3>Skills</h3>
+          <p>Here are my technical and professional skills.</p>
+        </div>
+
+        <div class="row">
+          <!-- Programming & Development -->
+          <div class="col-md-6">
+            <div class="services-inner-box">
+              <h4>
+                <i class="devicon-java-plain colored"></i> Programming &
+                Development
+              </h4>
+              <p>
+                <i class="devicon-java-plain colored"></i> Java,
+                <i class="devicon-spring-plain colored"></i> Spring Boot,
+                <i class="devicon-cplusplus-plain colored"></i> C/C++,
+                <i class="devicon-php-plain colored"></i> PHP,
+                <i class="devicon-python-plain colored"></i> Python,
+                <i class="devicon-nodejs-plain colored"></i> Node.js,
+                <i class="devicon-express-original"></i> Express.js
+              </p>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="col-md-6">
+            <div class="services-inner-box">
+              <h4><i class="devicon-react-original colored"></i> Frontend</h4>
+              <p>
+                <i class="devicon-html5-plain colored"></i> HTML,
+                <i class="devicon-css3-plain colored"></i> CSS,
+                <i class="devicon-javascript-plain colored"></i> JavaScript,
+                <i class="devicon-react-original colored"></i> React.js,
+                <i class="devicon-react-original colored"></i> React Native,
+                <i class="devicon-tailwindcss-plain colored"></i> Tailwind CSS,
+                <i class="devicon-figma-plain colored"></i> Figma
+              </p>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="col-md-6">
+            <div class="services-inner-box">
+              <h4><i class="devicon-postgresql-plain colored"></i> Database</h4>
+              <p>
+                <i class="devicon-postgresql-plain colored"></i> PostgreSQL,
+                <i class="devicon-mysql-plain colored"></i> MySQL
+              </p>
+            </div>
+          </div>
+
+          <!-- Testing -->
+          <div class="col-md-6">
+            <div class="services-inner-box">
+              <h4>
+                <i class="devicon-junit-plain colored"></i> Software Testing
+              </h4>
+              <p>
+                <i class="devicon-junit-plain colored"></i> JUnit,
+                <i class="devicon-selenium-original colored"></i> Selenium,
+                Cucumber, FEST, Postman
+              </p>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="col-md-6">
+            <div class="services-inner-box">
+              <h4>
+                <i class="devicon-git-plain colored"></i> Tools & Collaboration
+              </h4>
+              <p>
+                <i class="devicon-git-plain colored"></i> Git, Gitea,
+                <i class="devicon-jira-plain colored"></i> JIRA, Confluence,
+                <i class="devicon-linux-plain colored"></i> Linux
+              </p>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="col-md-6">
+            <div class="services-inner-box">
+              <h4><i class="flaticon-idea"></i> Soft Skills</h4>
+              <p>
+                Critical Thinking, Communication, Team Collaboration,
+                Adaptability, Problem Solving, Time Management
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end section -->
 
     <div id="education" class="section wb">
-        <div class="container">
-            <div class="section-title text-left">
-                <h3>Education</h3>
-                <div class="row">
-                    <table class="table table-striped table-bordered table-dark">
-                      <tbody>
-                        <tr>
-                          <th scope="row" class="text-center">Vocational High School</th>
-                          <td class="text-center">SMK Negeri 11 Kota Bandung ; Major : Software Engineering</td>
-                        </tr>
-                        <tr>
-                          <th scope="row" class="text-center">College</th>
-                          <td class="text-center">Politeknik Negeri Bandung ((current)) D4 Informatics Engineering</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div><!-- end row -->
-            </div><!-- end title -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+      <div class="container">
+        <div class="section-title text-left">
+          <h3>Education</h3>
+          <p>My academic journey in software and informatics engineering.</p>
+        </div>
 
-    <div id="portofolio" class="section lb">
-        <div class="container">
-            <div class="section-title text-left">
-                <h3>Portofolio</h3>
-            </div><!-- end title -->
+        <div class="timeline">
+          <!-- SMK -->
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="devicon-codepen-plain"></i>
+            </div>
+            <div class="timeline-content">
+              <h4>SMK Negeri 11 Kota Bandung</h4>
+              <span class="date">2018 – 2021</span>
+              <p>
+                Major in <b>Software Engineering</b>, gaining practical skills
+                in programming and software development fundamentals.
+              </p>
+            </div>
+          </div>
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="services-inner-box">
-                        <div class="ser-icon">
-                            <i class="flaticon-idea-1"></i>
-                        </div>
-                        <h2>Sitrify</h2>
-                        <p>Sitrify merupakan prototype aplikasi berbasis web yang bertujuan untuk memprediksi lagu yang akan hits atau tidak dari musisi.
-                            Sitrify dibangun untuk memenuhi tugas besar mata kuliah Sistem Informasi. Peran saya dalam pembuatan prototype ini adalah sebagai Frontend Developer.
-                        </p>
-                        <div class="col-6" style="margin-left: -15px;"><img src="uploads/sitrify2.png" class="img-fluid" /></div>
-                        <a href="https://github.com/salmaep/Sitrify" class="sim-btn btn-hover-new" style="margin-top: 10px;" data-text="View a repository"><span>View a repository</span></a>
-                        <p></p>
-                    </div>
-                </div>
-            </div><!-- end row -->
+          <!-- POLBAN -->
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="devicon-java-plain colored"></i>
+            </div>
+            <div class="timeline-content">
+              <h4>Politeknik Negeri Bandung</h4>
+              <span class="date">2021 – Present</span>
+              <p>
+                D4 <b>Informatics Engineering</b> with GPA 3.42/4.00. Learned
+                frontend, backend, desktop app development, software testing,
+                and system analysis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end section -->
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="services-inner-box">
-                        <div class="ser-icon">
-                            <i class="flaticon-idea-1"></i>
-                        </div>
-                        <h2>FinancePWA04</h2>
-                        <p>FinancePWA04 atau PWA04-Finance adalah aplikasi yang dibuat dengan tujuan untuk mengelola pemasukan dan pengeluaran serta mengatur budget bagi pengguna.
-                            FinancePWA04 dibangun untuk memenuhi tugas besar mata kuliah Pengembangan Web dan dibangun bersama rekan kelompok saya yang lainnya. Peran saya dalam pembuatan prototype ini adalah sebagai Frontend Developer.
-                        </p>
-                        <div class="col-6" style="margin-left: -15px;"><img src="uploads/finance.png" class="img-fluid" /></div>
-                        <a href="https://github.com/salmaep/financeapp" class="sim-btn btn-hover-new" style="margin-top: 5px;" data-text="View a repository"><span>View a repository</span></a>
-                        <a href="https://drive.google.com/file/d/1ebzpeal7R_W2p8cVBJE-Cs8KdLlKCGlh/view?usp=sharing" class="sim-btn btn-hover-new" style="margin-top: 5px;" data-text="View a manual book"><span>View a manual book</span></a>
-                        <p></p>
-                    </div>
-                </div>
-            </div><!-- end row -->
+    <div id="project-work" class="section lb">
+      <div class="container">
+        <div class="section-title text-left">
+          <h3>Project work</h3>
+        </div>
+        <!-- end title -->
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="services-inner-box">
-                        <div class="ser-icon">
-                            <i class="flaticon-idea-1"></i>
-                        </div>
-                        <h2>PolbanEduStaff</h2>
-                        <p>PolbanEduStaff merupakan web yang memuat informasi profil seluruh staff di Polban. Web ini dibangun untuk memenuhi mata kuliah Pengembangan Web dan dibangun bersama teman kelompok saya. Peran saya dalam pembuatan web ini adalah sebagai Frontend Developer serta Backend Developer.
-                        </p>
-                        <div class="col-6" style="margin-left: -15px;"><img src="uploads/dosenweb1.png" class="img-fluid" /></div>
-                        <a href="https://github.com/salmaep/webdev-s6" class="sim-btn btn-hover-new" style="margin-top: 5px;" data-text="View a repository"><span>View a repository</span></a>
-                        <p></p>
-                    </div>
-                </div>
-            </div><!-- end row -->
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="services-inner-box">
+              <div class="ser-icon">
+                <i class="flaticon-idea-1"></i>
+              </div>
+              <h2>Sitrify</h2>
+              <p>
+                Sitrify merupakan prototype aplikasi berbasis web yang bertujuan
+                untuk memprediksi lagu yang akan hits atau tidak dari musisi.
+                Sitrify dibangun untuk memenuhi tugas besar mata kuliah Sistem
+                Informasi. Peran saya dalam pembuatan prototype ini adalah
+                sebagai Frontend Developer.
+              </p>
+              <div class="col-6" style="margin-left: -15px">
+                <img src="uploads/sitrify2.png" class="img-fluid" />
+              </div>
+              <a
+                href="https://github.com/salmaep/Sitrify"
+                class="sim-btn btn-hover-new"
+                style="margin-top: 10px"
+                data-text="View a repository"
+                ><span>View a repository</span></a
+              >
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="services-inner-box">
-                        <div class="ser-icon">
-                            <i class="flaticon-idea-1"></i>
-                        </div>
-                        <h2>FilterLab</h2>
-                        <p>FilterLab merupakan Platform website untuk digitalisasi dan image processing. FilterLab dibangun untuk memenuhi mata kuliah Pengelohan Citra Digital dan dibangun sepenuhnya oleh saya sendiri.
-                            FilterLab menyediakan berbagai macam filter yang dapat digunakan untuk mengedit foto. Selain itu, terdapat fitur menarik yaitu matching image game yang dapat digunakan untuk mengasah daya ingat serta hiburan tambahan.
-                        </p>
-                        <div class="col-6" style="margin-left: -15px;"><img src="uploads/pcd.png" class="img-fluid" /></div>
-                        <a href="https://github.com/salmaep/FilterLab-website" class="sim-btn btn-hover-new" style="margin-top: 5px;" data-text="View a repository"><span>View a repository</span></a>
-                        <p></p>
-                    </div>
-                </div>
-            </div><!-- end row -->
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="services-inner-box">
+              <div class="ser-icon">
+                <i class="flaticon-idea-1"></i>
+              </div>
+              <h2>FinancePWA04</h2>
+              <p>
+                FinancePWA04 atau PWA04-Finance adalah aplikasi yang dibuat
+                dengan tujuan untuk mengelola pemasukan dan pengeluaran serta
+                mengatur budget bagi pengguna. FinancePWA04 dibangun untuk
+                memenuhi tugas besar mata kuliah Pengembangan Web dan dibangun
+                bersama rekan kelompok saya yang lainnya. Peran saya dalam
+                pembuatan prototype ini adalah sebagai Frontend Developer.
+              </p>
+              <div class="col-6" style="margin-left: -15px">
+                <img src="uploads/finance.png" class="img-fluid" />
+              </div>
+              <a
+                href="https://github.com/salmaep/financeapp"
+                class="sim-btn btn-hover-new"
+                style="margin-top: 5px"
+                data-text="View a repository"
+                ><span>View a repository</span></a
+              >
+              <a
+                href="https://drive.google.com/file/d/1ebzpeal7R_W2p8cVBJE-Cs8KdLlKCGlh/view?usp=sharing"
+                class="sim-btn btn-hover-new"
+                style="margin-top: 5px"
+                data-text="View a manual book"
+                ><span>View a manual book</span></a
+              >
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="services-inner-box">
-                        <div class="ser-icon">
-                            <i class="flaticon-idea-1"></i>
-                        </div>
-                        <h2>Redesign UI/UX BCA Mobile Banking</h2>
-                        <p>Design figma ini merupakan hasil redesign dari aplikasi BCA Mobile Banking. Redesign ini dibuat untuk memenuhi tugas besar mata kuliah Human Computer Interaction. Peran saya dalam pembuatan prototype ini adalah sebagai UI/UX Designer yang dibantu oleh teman kelompok saya.
-                        </p>
-                        <a href="https://www.figma.com/file/JDQfVlKtt6I21EgBSx8lAO/UI%2FUX-Mobile-Banking?type=design&node-id=0%3A1&mode=design&t=kDk6I2x0TMyluRF5-1" class="sim-btn btn-hover-new" style="margin-top: 5px;" data-text="View a design"><span>View a design</span></a>
-                        <p></p>
-                    </div>
-                </div>
-            </div><!-- end row -->
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="services-inner-box">
+              <div class="ser-icon">
+                <i class="flaticon-idea-1"></i>
+              </div>
+              <h2>PolbanEduStaff</h2>
+              <p>
+                PolbanEduStaff merupakan web yang memuat informasi profil
+                seluruh staff di Polban. Web ini dibangun untuk memenuhi mata
+                kuliah Pengembangan Web dan dibangun bersama teman kelompok
+                saya. Peran saya dalam pembuatan web ini adalah sebagai Frontend
+                Developer serta Backend Developer.
+              </p>
+              <div class="col-6" style="margin-left: -15px">
+                <img src="uploads/dosenweb1.png" class="img-fluid" />
+              </div>
+              <a
+                href="https://github.com/salmaep/webdev-s6"
+                class="sim-btn btn-hover-new"
+                style="margin-top: 5px"
+                data-text="View a repository"
+                ><span>View a repository</span></a
+              >
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="services-inner-box">
-                        <div class="ser-icon">
-                            <i class="flaticon-idea-1"></i>
-                        </div>
-                        <h2>Web Scrapping</h2>
-                        <p>Web Scrapping merupakan penugasan scrapping data web dan menggabungkannya menjadi sebuah informasi seperti TOP 100 Netflix Movies
-                            Data scrapping disini hanya dilakukan satu kali penarikan data, sehingga data yang tertera merupakan data lampau dan belum diperbaharui.
-                        </p>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="services-inner-box">
+              <div class="ser-icon">
+                <i class="flaticon-idea-1"></i>
+              </div>
+              <h2>FilterLab</h2>
+              <p>
+                FilterLab merupakan Platform website untuk digitalisasi dan
+                image processing. FilterLab dibangun untuk memenuhi mata kuliah
+                Pengelohan Citra Digital dan dibangun sepenuhnya oleh saya
+                sendiri. FilterLab menyediakan berbagai macam filter yang dapat
+                digunakan untuk mengedit foto. Selain itu, terdapat fitur
+                menarik yaitu matching image game yang dapat digunakan untuk
+                mengasah daya ingat serta hiburan tambahan.
+              </p>
+              <div class="col-6" style="margin-left: -15px">
+                <img src="uploads/pcd.png" class="img-fluid" />
+              </div>
+              <a
+                href="https://github.com/salmaep/FilterLab-website"
+                class="sim-btn btn-hover-new"
+                style="margin-top: 5px"
+                data-text="View a repository"
+                ><span>View a repository</span></a
+              >
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
 
-                        <button onclick="scrap1()" class="sim-btn btn-hover-new" data-text="See web scraping 1"><span>See web scraping 1</span></button>
-                        <button onclick="scrap2()" class="sim-btn btn-hover-new" data-text="See web scraping 2"><span>See web scraping 2</span></button>
-                        <p></p>
-                        <p><i style="font-size:24px" class="fa">&#xf0eb;</i></i> Tips : This button is a button to show and hide scraping content. Therefore, to open the next scraping result, it is recommended to click the currently opened scraping button to hide the content so that both scraping content is displayed properly. </p>
-                    </div>
-                </div>
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="services-inner-box">
+              <div class="ser-icon">
+                <i class="flaticon-idea-1"></i>
+              </div>
+              <h2>Redesign UI/UX BCA Mobile Banking</h2>
+              <p>
+                Design figma ini merupakan hasil redesign dari aplikasi BCA
+                Mobile Banking. Redesign ini dibuat untuk memenuhi tugas besar
+                mata kuliah Human Computer Interaction. Peran saya dalam
+                pembuatan prototype ini adalah sebagai UI/UX Designer yang
+                dibantu oleh teman kelompok saya.
+              </p>
+              <a
+                href="https://www.figma.com/file/JDQfVlKtt6I21EgBSx8lAO/UI%2FUX-Mobile-Banking?type=design&node-id=0%3A1&mode=design&t=kDk6I2x0TMyluRF5-1"
+                class="sim-btn btn-hover-new"
+                style="margin-top: 5px"
+                data-text="View a design"
+                ><span>View a design</span></a
+              >
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
 
-    <div id="scraping1" class="section" style="display:none">
-        <div class="container">
-            <center><h2>Headline Republika Online</h2></center>
-        
-            <!-- Menampilkan headline -->
-            <div id="headline_json" style="background-color: white;"></div>
-        </div><!-- end container -->
-    </div><!-- end section -->
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="services-inner-box">
+              <div class="ser-icon">
+                <i class="flaticon-idea-1"></i>
+              </div>
+              <h2>Web Scrapping</h2>
+              <p>
+                Web Scrapping merupakan penugasan scrapping data web dan
+                menggabungkannya menjadi sebuah informasi seperti TOP 100
+                Netflix Movies Data scrapping disini hanya dilakukan satu kali
+                penarikan data, sehingga data yang tertera merupakan data lampau
+                dan belum diperbaharui.
+              </p>
 
-    <div id="scraping2" class="section" style="display:none">
-        <div class="container">
-            <center>
-                    <h2>- TOP 100 Netflix Movies -</h2>
-            </center>
-    
-            <!-- Menampilkan headline -->
-            <div id="headline2_json" style="background-color: white;"></div>
-        </div><!-- end container -->
-    </div><!-- end section -->
-	
-	 <div id="testimonials" class="section wb">
-        <div class="container">
-            <div class="section-title text-left">
-                <h3>Goals</h3>
-                <p>My goals after graduating from JTK POLBAN, I hope that I can become a successful person and can make my parents proud. I also have a dream that I have shown in this below</p>
-            </div><!-- end title -->
+              <button
+                onclick="scrap1()"
+                class="sim-btn btn-hover-new"
+                data-text="See web scraping 1"
+              >
+                <span>See web scraping 1</span>
+              </button>
+              <button
+                onclick="scrap2()"
+                class="sim-btn btn-hover-new"
+                data-text="See web scraping 2"
+              >
+                <span>See web scraping 2</span>
+              </button>
+              <p></p>
+              <p>
+                <i style="font-size: 24px" class="fa">&#xf0eb;</i> Tips : This
+                button is a button to show and hide scraping content. Therefore,
+                to open the next scraping result, it is recommended to click the
+                currently opened scraping button to hide the content so that
+                both scraping content is displayed properly.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end section -->
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                        <div class="testimonial clearfix">
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i>UI/UX Designer</h3>
-                                <p class="lead">UI/UX designer is one of the goals that I have wanted for a long time, because I think I would be suitable for that position.</p>
-                            </div>
-                            <!-- <div class="testi-meta">
-                                <img src="uploads/testi_01.png" alt="" class="img-fluid alignleft">
-                                <h4>James Fernando <small>- Manager of Racer</small></h4>
-                            </div> -->
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
-<p></p>
-                        <div class="testimonial clearfix">
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i>Frontend Developer</h3>
-                                <p class="lead">Becoming a front-end developer has been my dream since I was in grade 2 of a vocational high school, to be precise, when I joined the field work practice because at that time I was placed in the front-end web and mobile developer.</p>
-                            </div>
-                            <!-- <div class="testi-meta">
-                                <img src="uploads/testi_02.png" alt="" class="img-fluid alignleft">
-                                <h4>Jacques Philips <small>- Designer</small></h4>
-                            </div> -->
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
+    <div id="scraping1" class="section" style="display: none">
+      <div class="container">
+        <center><h2>Headline Republika Online</h2></center>
 
-                        
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
-	
-	<!-- <div id="blog" class="section lb">
+        <!-- Menampilkan headline -->
+        <div id="headline_json" style="background-color: white"></div>
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end section -->
+
+    <div id="scraping2" class="section" style="display: none">
+      <div class="container">
+        <center>
+          <h2>- TOP 100 Netflix Movies -</h2>
+        </center>
+
+        <!-- Menampilkan headline -->
+        <div id="headline2_json" style="background-color: white"></div>
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end section -->
+
+    <!-- <div id="testimonials" class="section wb">
+      <div class="container">
+        <div class="section-title text-left">
+          <h3>Goals</h3>
+          <p>
+            My goals after graduating from JTK POLBAN, I hope that I can become
+            a successful person and can make my parents proud. I also have a
+            dream that I have shown in this below
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="testimonial clearfix">
+              <div class="desc">
+                <h3><i class="fa fa-quote-left"></i>UI/UX Designer</h3>
+                <p class="lead">
+                  UI/UX designer is one of the goals that I have wanted for a
+                  long time, because I think I would be suitable for that
+                  position.
+                </p>
+              </div>
+            </div>
+            <p></p>
+            <div class="testimonial clearfix">
+              <div class="desc">
+                <h3><i class="fa fa-quote-left"></i>Frontend Developer</h3>
+                <p class="lead">
+                  Becoming a front-end developer has been my dream since I was
+                  in grade 2 of a vocational high school, to be precise, when I
+                  joined the field work practice because at that time I was
+                  placed in the front-end web and mobile developer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div id="blog" class="section lb">
 		<div class="container">
 			<div class="section-title text-left">
                 <h3>Hobby</h3>
@@ -520,54 +745,67 @@
 	</div> -->
 
     <div id="contact" class="section db">
-        <div class="container">
-            <div class="section-title text-left">
-                <h3>Contact</h3>
-                <p>To get to know me more, you can visit my social media.</p>
-                <p>Instagram : @salmaedptr.
-                <p>Github : <a href="https://github.com/salmaep">https://github.com/salmaep</a></p>
-                Or you can also visit me at the address listed below</p>
-            </div><!-- end title -->
-            <!--Google Maps-->
-            </div><!-- end row -->
-    </div><!-- end section -->
+      <div class="container">
+        <div class="section-title text-left">
+          <h3>Contact</h3>
+          <p>To get to know me more, you can visit my social media.</p>
+          <p>LinkedIn : <a href="">Salma Edyna Putri</a></p>
+          <p>
+            Github :
+            <a href="https://www.linkedin.com/in/salma-edyna-putri-74bb98309/"
+              >https://github.com/salmaep</a
+            >
+          </p>
+          <p>Or you can also visit me at the address listed below</p>
+        </div>
+        <!-- end title -->
+        <!--Google Maps-->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end section -->
 
     <div class="copyrights">
-        <div class="container">
-            <div class="footer-distributed">
-                <div class="footer-left">
-                    <p class="footer-links">
-                        <a href="#home">Home</a>
-                        <a href="#about">About Me</a>
-                        <a href="#services">Skills</a>
-                        <a href="#education">Education</a>
-                        <a href="#portofolio">Portofolio</a>
-                        <a href="#testimonials">Goals</a>
-                        <!-- <a href="#blog">Hobby</a> -->
-                        <a href="#contact">Contact</a>
-                    </p>
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2022 <a href="#"></a> Design By : 
-					<a href="https://html.design/">Salma Edyna Putri</a></p>
-                </div>
-            </div>
-        </div><!-- end container -->
-    </div><!-- end copyrights -->
+      <div class="container">
+        <div class="footer-distributed">
+          <div class="footer-left">
+            <p class="footer-links">
+              <a href="#home">Home</a>
+              <a href="#about">About Me</a>
+              <a href="#services">Skills</a>
+              <a href="#education">Education</a>
+              <a href="#project-work">Project Work</a>
+              <!-- <a href="#testimonials">Goals</a> -->
+              <!-- <a href="#blog">Hobby</a> -->
+              <a href="#contact">Contact</a>
+            </p>
+            <p class="footer-company-name">
+              All Rights Reserved. &copy; 2022 <a href="#"></a> Design By :
+              <a href="https://html.design/">Salma Edyna Putri</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end copyrights -->
 
-    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"
+      ><i class="fa fa-angle-up"></i
+    ></a>
 
     <!-- ALL JS FILES -->
     <script src="js/all.js"></script>
-	<!-- Camera Slider -->
-	<script src="js/jquery.mobile.customized.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script> 
-	<script src="js/parallaxie.js"></script>
-	<script src="js/headline.js"></script>
-	<!-- Contact form JavaScript -->
+    <!-- Camera Slider -->
+    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/parallaxie.js"></script>
+    <script src="js/headline.js"></script>
+    <!-- Contact form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
     <!-- ALL PLUGINS -->
     <script src="js/custom.js"></script>
     <script src="js/jquery.vide.js"></script>
-
-</body>
+  </body>
 </html>
